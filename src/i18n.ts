@@ -5,13 +5,15 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      placeholder: "Country, territory...",
+      placeholder: "Guess a wilderness campground.",
       guess: "Guess",
-      share: "Share",
-      showOnGoogleMaps: "👀 on Google Maps",
+      share: "Click to Copy Results for Sharing",
+      welcome:
+        "Welcome to Glacle, the game where you guess the Glacier campground! Click on the ❓ for instructions.",
+      showOnGoogleMaps: "🗺️ View the campground map",
       welldone: "Well done!",
-      unknownCountry: "Unknown country!",
-      copy: "Copied results to clipboard",
+      unknownCountry: "Unknown campground!",
+      copy: "Results copied to clipboard",
       showCountry: "🗺️ Show map!",
       cancelRotation: "🌀 Cancel rotation",
       settings: {
@@ -23,7 +25,16 @@ const resources = {
         noImageMode: "Hide country image for more of a challenge.",
         rotationMode: "Rotate randomly country image.",
       },
-      buyMeACoffee: "Buy me a ☕!",
+      stats: {
+        title: "Statistics",
+        played: "Played",
+        win: "Win %",
+        currentStreak: "Current Streak",
+        maxStreak: "Max Streak",
+        averageBestDistance: "Average Closest Guess",
+        guessDistribution: "Guess distribution:",
+      },
+      buyMeACoffee: "Click ❓ for instructions, and 📊 for stats.",
     },
   },
   fr: {

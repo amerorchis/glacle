@@ -1,4 +1,4 @@
-const MAX_DISTANCE_ON_EARTH = 20_000_000;
+const PARK_LENGTH = 91893;
 
 export type Direction =
   | "S"
@@ -19,8 +19,8 @@ export type Direction =
   | "N";
 
 export function computeProximityPercent(distance: number): number {
-  const proximity = Math.max(MAX_DISTANCE_ON_EARTH - distance, 0);
-  return Math.round((proximity / MAX_DISTANCE_ON_EARTH) * 100);
+  const proximity = Math.max(PARK_LENGTH - distance, 0);
+  return Math.round((proximity / PARK_LENGTH) * 100);
 }
 
 export function generateSquareCharacters(
@@ -49,5 +49,5 @@ export function formatDistance(
 
   return distanceUnit === "km"
     ? `${Math.round(distanceInKm)}km`
-    : `${Math.round(distanceInKm * 0.621371)}mi`;
+    : `${Math.round(distanceInKm * 0.621371)} mi.`;
 }

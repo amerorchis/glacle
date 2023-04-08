@@ -11,7 +11,7 @@ import { Guess } from "../domain/guess";
 import React from "react";
 import { SettingsData } from "../hooks/useSettings";
 
-const START_DATE = DateTime.fromISO("2022-01-21");
+const START_DATE = DateTime.fromISO("2023-04-04");
 
 interface ShareProps {
   guesses: Guess[];
@@ -40,11 +40,11 @@ export function Share({
       )
     );
     const difficultyModifierEmoji = hideImageMode
-      ? " 🙈"
+      ? " 🏕️"
       : rotationMode
       ? " 🌀"
       : "";
-    const title = `#Worldle #${dayCount} ${guessCount}/6${difficultyModifierEmoji}`;
+    const title = `#Glacle #${dayCount} ${guessCount}/6${difficultyModifierEmoji}`;
 
     const guessString = guesses
       .map((guess) => {
@@ -53,7 +53,7 @@ export function Share({
       })
       .join("\n");
 
-    return [title, guessString, "https://worldle.teuteuf.fr"].join("\n");
+    return [title, guessString, "http://amerorchis.com/glacle"].join("\n");
   }, [dayString, guesses, hideImageMode, rotationMode, theme]);
 
   return (
@@ -64,7 +64,7 @@ export function Share({
         format: "text/plain",
       }}
     >
-      <button className="border-2 px-4 uppercase bg-green-600 hover:bg-green-500 active:bg-green-700 text-white w-full">
+      <button className="border-2 h-10 font-bold px-4 bg-green-500 hover:bg-glacier-blue active:bg-green-700 text-white w-full">
         {t("share")}
       </button>
     </CopyToClipboard>

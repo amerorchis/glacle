@@ -5,7 +5,8 @@ import {
   countries,
   getCountryName,
   sanitizeCountryName,
-} from "../domain/countries";
+  matchCountryName,
+} from "../domain/cgs";
 import { useGuesses } from "../hooks/useGuesses";
 import { CountryInput } from "./CountryInput";
 import * as geolib from "geolib";
@@ -30,16 +31,16 @@ export function Game({ settingsData }: GameProps) {
   const { t, i18n } = useTranslation();
   const dayString = useMemo(getDayString, []);
 
-  const [country, randomAngle, imageScale] = useCountry(dayString);
+  const [country] = useCountry(dayString);
 
   const [currentGuess, setCurrentGuess] = useState("");
   const [guesses, addGuess] = useGuesses(dayString);
-  const [hideImageMode, setHideImageMode] = useMode(
+  const [hideImageMode] = useMode(
     "hideImageMode",
     dayString,
     settingsData.noImageMode
   );
-  const [rotationMode, setRotationMode] = useMode(
+  const [rotationMode] = useMode(
     "rotationMode",
     dayString,
     settingsData.rotationMode
@@ -54,10 +55,11 @@ export function Game({ settingsData }: GameProps) {
       e.preventDefault();
       const guessedCountry = countries.find(
         (country) =>
-          sanitizeCountryName(
-            getCountryName(i18n.resolvedLanguage, country)
-          ) === sanitizeCountryName(currentGuess)
+          sanitizeCountryName(getCountryName(country)) ===
+          sanitizeCountryName(currentGuess)
       );
+
+      const cgName = matchCountryName(currentGuess, countries);
 
       if (guessedCountry == null) {
         toast.error(t("unknownCountry"));
@@ -65,7 +67,7 @@ export function Game({ settingsData }: GameProps) {
       }
 
       const newGuess = {
-        name: currentGuess,
+        name: cgName,
         distance: geolib.getDistance(guessedCountry, country),
         direction: geolib.getCompassDirection(guessedCountry, country),
       };
@@ -77,7 +79,7 @@ export function Game({ settingsData }: GameProps) {
         toast.success(t("welldone"), { delay: 2000 });
       }
     },
-    [addGuess, country, currentGuess, i18n.resolvedLanguage, t]
+    [addGuess, country, currentGuess, t]
   );
 
   useEffect(() => {
@@ -85,7 +87,7 @@ export function Game({ settingsData }: GameProps) {
       guesses.length === MAX_TRY_COUNT &&
       guesses[guesses.length - 1].distance > 0
     ) {
-      toast.info(getCountryName(i18n.resolvedLanguage, country).toUpperCase(), {
+      toast.info(getCountryName(country).toUpperCase(), {
         autoClose: false,
         delay: 2000,
       });
@@ -94,40 +96,7 @@ export function Game({ settingsData }: GameProps) {
 
   return (
     <div className="flex-grow flex flex-col mx-2">
-      {hideImageMode && !gameEnded && (
-        <button
-          className="border-2 uppercase my-2 hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-slate-800 dark:active:bg-slate-700"
-          type="button"
-          onClick={() => setHideImageMode(false)}
-        >
-          {t("showCountry")}
-        </button>
-      )}
-      <div className="my-1">
-        <img
-          className={`max-h-52 m-auto transition-transform duration-700 ease-in dark:invert ${
-            hideImageMode && !gameEnded ? "h-0" : "h-full"
-          }`}
-          alt="country to guess"
-          src={`images/countries/${country.code.toLowerCase()}/vector.svg`}
-          style={
-            rotationMode && !gameEnded
-              ? {
-                  transform: `rotate(${randomAngle}deg) scale(${imageScale})`,
-                }
-              : {}
-          }
-        />
-      </div>
-      {rotationMode && !hideImageMode && !gameEnded && (
-        <button
-          className="border-2 uppercase mb-2 hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-slate-800 dark:active:bg-slate-700"
-          type="button"
-          onClick={() => setRotationMode(false)}
-        >
-          {t("cancelRotation")}
-        </button>
-      )}
+      <br></br>
       <Guesses
         rowCount={MAX_TRY_COUNT}
         guesses={guesses}
@@ -145,10 +114,7 @@ export function Game({ settingsData }: GameProps) {
             />
             <a
               className="underline w-full text-center block mt-4"
-              href={`https://www.google.com/maps?q=${getCountryName(
-                i18n.resolvedLanguage,
-                country
-              )}&hl=${i18n.resolvedLanguage}`}
+              href={`https://www.nps.gov/glac/planyourvisit/upload/Wilderness-Campground-Map-2023.pdf`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -157,16 +123,16 @@ export function Game({ settingsData }: GameProps) {
           </>
         ) : (
           <form onSubmit={handleSubmit}>
-            <div className="flex flex-col">
+            <div className="flex flex-col mt-1">
               <CountryInput
                 currentGuess={currentGuess}
                 setCurrentGuess={setCurrentGuess}
               />
               <button
-                className="border-2 uppercase my-0.5 hover:bg-gray-50 active:bg-gray-100 dark:hover:bg-slate-800 dark:active:bg-slate-700"
+                className="border-2 uppercase h-10 mt-3 my-0.5 bg-dark-blue hover:bg-slate-800 active:bg-slate-700 font-bold"
                 type="submit"
               >
-                🌍 {t("guess")}
+                🏕️ &nbsp;{t("guess")}
               </button>
             </div>
           </form>

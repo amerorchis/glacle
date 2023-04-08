@@ -3,6 +3,13 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        'dark-blue': '#26547C',
+        'glacier-blue': '#39B7C2',
+        'midnight-green1': '#123C3F',
+        'midnight-green': '#0D2D30',
+        'tea-green': '#C6ECAE',
+      },
       keyframes: {
         reveal: {
           "0%": {

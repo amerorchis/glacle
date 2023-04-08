@@ -7,14 +7,21 @@ import { useTranslation } from "react-i18next";
 import { InfosFr } from "./components/panels/InfosFr";
 import { Settings } from "./components/panels/Settings";
 import { useSettings } from "./hooks/useSettings";
-import { Worldle } from "./components/Worldle";
+import { Stats } from "./components/panels/Stats";
+import { loadAllGuesses } from "./domain/guess";
+import { toast } from "react-toastify";
 
 function App() {
   const { t, i18n } = useTranslation();
 
+  const allGuesses = loadAllGuesses();
+
+  const allGuessesEntries = Object.entries(allGuesses);
+  const played = allGuessesEntries.length;
+
   const [infoOpen, setInfoOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-
+  const [statsOpen, setStatsOpen] = useState(false);
   const [settingsData, updateSettings] = useSettings();
 
   useEffect(() => {
@@ -24,6 +31,13 @@ function App() {
       document.documentElement.classList.remove("dark");
     }
   }, [settingsData.theme]);
+
+  if (played === 0) {
+    toast.info(t("welcome"), {
+      autoClose: false,
+      toastId: "welcome",
+    });
+  }
 
   return (
     <>
@@ -54,7 +68,12 @@ function App() {
         settingsData={settingsData}
         updateSettings={updateSettings}
       />
-      <div className="flex justify-center flex-auto dark:bg-slate-900 dark:text-slate-50">
+      <Stats
+        isOpen={statsOpen}
+        close={() => setStatsOpen(false)}
+        distanceUnit={settingsData.distanceUnit}
+      />
+      <div className="flex justify-center flex-auto dark:bg-midnight-green dark:text-slate-50">
         <div className="w-full max-w-lg flex flex-col">
           <header className="border-b-2 border-gray-200 flex">
             <button
@@ -62,30 +81,23 @@ function App() {
               type="button"
               onClick={() => setInfoOpen(true)}
             >
-              ❔
+              ❓
             </button>
             <h1 className="text-4xl font-bold uppercase tracking-wide text-center my-1 flex-auto">
-              Wor<span className="text-green-600">l</span>dle
+              <span className="text-green-600">GLAC</span>le
             </h1>
             <button
               className="mx-3 text-xl"
               type="button"
-              onClick={() => setSettingsOpen(true)}
+              onClick={() => setStatsOpen(true)}
             >
-              ⚙️
+              📊
             </button>
           </header>
           <Game settingsData={settingsData} />
-          <footer className="flex justify-center text-sm mt-8 mb-1">
-            ❤️ <Worldle />? -
-            <a
-              className="underline pl-1"
-              href="https://www.ko-fi.com/teuteuf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {t("buyMeACoffee")}
-            </a>
+          <footer className="flex justify-center text-sm text-center mt-8 mb-1">
+            {t("buyMeACoffee")}
+            <br></br>Game by Andrew Smith.
           </footer>
         </div>
       </div>

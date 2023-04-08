@@ -61,16 +61,12 @@ export function GuessRow({ guess, settingsData }: GuessRowProps) {
 
   switch (animationState) {
     case "NOT_STARTED":
-      return (
-        <div
-          className={`col-span-7 border-2 h-8 bg-gray-200 dark:bg-slate-600`}
-        />
-      );
+      return <div className={`col-span-7 border-2 h-10 bg-midnight-green`} />;
     case "RUNNING":
       return (
         <>
           <div
-            className={`flex text-2xl w-full justify-evenly items-center col-span-6 border-2 h-8`}
+            className={`flex text-2xl w-full justify-evenly items-center col-span-6 border-2 h-10`}
           >
             {squares.map((character, index) => (
               <div
@@ -84,7 +80,7 @@ export function GuessRow({ guess, settingsData }: GuessRowProps) {
               </div>
             ))}
           </div>
-          <div className="border-2 h-8 col-span-1 animate-reveal">
+          <div className="border-2 h-10 col-span-1 animate-reveal">
             <CountUp
               end={proximity}
               suffix="%"
@@ -96,20 +92,20 @@ export function GuessRow({ guess, settingsData }: GuessRowProps) {
     case "ENDED":
       return (
         <>
-          <div className="flex items-center justify-center border-2 h-8 col-span-3 animate-reveal">
+          <div className="flex items-center justify-center border-2 h-10 col-span-3 animate-reveal">
             <p className="text-ellipsis overflow-hidden whitespace-nowrap">
-              {guess?.name.toUpperCase()}
+              {guess?.name}
             </p>
           </div>
-          <div className="flex items-center justify-center border-2 h-8 col-span-2 animate-reveal">
+          <div className="flex items-center justify-center border-2 h-10 col-span-2 animate-reveal">
             {guess && formatDistance(guess.distance, distanceUnit)}
           </div>
-          <div className="flex items-center justify-center border-2 h-8 col-span-1 animate-reveal">
+          <div className="flex items-center justify-center border-2 h-10 col-span-1 animate-reveal">
             {guess?.distance === 0
               ? "🎉"
               : guess && DIRECTION_ARROWS[guess.direction]}
           </div>
-          <div className="flex items-center justify-center border-2 h-8 col-span-1 animate-reveal animate-pop">
+          <div className="flex items-center justify-center border-2 h-10 col-span-1 animate-reveal animate-pop">
             {`${proximity}%`}
           </div>
         </>

@@ -12,7 +12,7 @@ interface GuessesProps {
 export function Guesses({ rowCount, guesses, settingsData }: GuessesProps) {
   return (
     <div>
-      <div className="grid grid-cols-7 gap-1 text-center">
+      <div className="grid grid-cols-7 gap-3 text-center">
         {Array.from(Array(rowCount).keys()).map((index) => (
           <GuessRow
             key={index}
