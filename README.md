@@ -1,9 +1,8 @@
-# Wor**l**dle
+**Glac**le
 
-Play this geographical wordle here: https://worldle.teuteuf.fr !
+Play this geographical campground game here: https://amerorchis.com/glacle !
 
 ## Resources used:
 
-- Countries with long/lat => https://developers.google.com/public-data/docs/canonical/countries_csv
-- Country images => https://github.com/djaiss/mapsicon
-- French country names => https://fr.wikipedia.org/wiki/ISO_3166
+- Campground long/lat data => https://www.nps.gov/glac/planyourvisit/upload/GLAC_WildernessCGs.gpx
+- Campground map => https://www.nps.gov/glac/planyourvisit/upload/Wilderness-Campground-Map-2023.pdf
