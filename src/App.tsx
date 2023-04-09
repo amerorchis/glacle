@@ -10,10 +10,11 @@ import { useSettings } from "./hooks/useSettings";
 import { Stats } from "./components/panels/Stats";
 import { loadAllGuesses } from "./domain/guess";
 import { toast } from "react-toastify";
-import type { AppProps } from 'next/app';
-import { Analytics } from '@vercel/analytics/react';
+import { inject } from '@vercel/analytics';
 
-function App({ Component, pageProps }: AppProps) {
+inject();
+
+function App() {
   const { t, i18n } = useTranslation();
 
   const allGuesses = loadAllGuesses();
@@ -36,15 +37,13 @@ function App({ Component, pageProps }: AppProps) {
 
   if (played === 0) {
     toast.info(t("welcome"), {
-      autoClose: false,
       toastId: "welcome",
+      autoClose: 8000,
     });
   }
 
   return (
     <>
-      <Component {...pageProps} />
-      <Analytics />
       <ToastContainer
         position="top-center"
         transition={Flip}
