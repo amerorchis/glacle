@@ -114,7 +114,7 @@ export function Game({ settingsData }: GameProps) {
             />
             <a
               className="underline w-full text-center block mt-4"
-              href={`https://www.nps.gov/glac/planyourvisit/upload/Wilderness-Campground-Map-2023.pdf`}
+              href={`https://amerorchis.com/Wilderness-Campground-Map.pdf`}
               target="_blank"
               rel="noopener noreferrer"
             >
