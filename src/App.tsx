@@ -10,7 +10,7 @@ import { useSettings } from "./hooks/useSettings";
 import { Stats } from "./components/panels/Stats";
 import { loadAllGuesses } from "./domain/guess";
 import { toast } from "react-toastify";
-import { inject } from '@vercel/analytics';
+import { inject } from "@vercel/analytics";
 
 inject();
 
@@ -50,7 +50,6 @@ function App() {
         theme={settingsData.theme}
         autoClose={2000}
         bodyClassName="font-bold text-center"
-
       />
       {i18n.resolvedLanguage === "fr" ? (
         <InfosFr
