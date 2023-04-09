@@ -9,7 +9,9 @@ const resources = {
       guess: "Guess",
       share: "Click to Copy Results for Sharing",
       welcome:
-        "Welcome to Glacle, the game where you guess the Glacier campground! Click on the ❓ for instructions. Due to increasing popularity, I had to find a permanent server solution and some user stats from before 4/9 may be lost.",
+        "Welcome to Glacle, the game where you guess the Glacier campground! Click on the ❓ for instructions.",
+      sorry:
+        "Due to increasing popularity, I had to find a permanent server solution and some user stats from before 4/9 may be lost.",
       showOnGoogleMaps: "🗺️ View the campground map",
       welldone: "Well done!",
       unknownCountry: "Unknown campground!",

@@ -18,7 +18,7 @@ function App() {
   const { t, i18n } = useTranslation();
 
   const allGuesses = loadAllGuesses();
-
+  const date = new Date();
   const allGuessesEntries = Object.entries(allGuesses);
   const played = allGuessesEntries.length;
 
@@ -40,6 +40,12 @@ function App() {
       toastId: "welcome",
       autoClose: 6000,
     });
+    if (date >= new Date("2023-04-09") && date <= new Date("2023-04-12")) {
+      toast.warning(t("sorry"), {
+        toastId: "sorry april 9 to 12",
+        autoClose: 6000,
+      });
+    }
   }
 
   return (
@@ -50,6 +56,7 @@ function App() {
         theme={settingsData.theme}
         autoClose={2000}
         bodyClassName="font-bold text-center"
+        limit={1}
       />
       {i18n.resolvedLanguage === "fr" ? (
         <InfosFr
