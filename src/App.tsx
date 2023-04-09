@@ -38,7 +38,7 @@ function App() {
   if (played === 0) {
     toast.info(t("welcome"), {
       toastId: "welcome",
-      autoClose: 8000,
+      autoClose: 6000,
     });
   }
 
