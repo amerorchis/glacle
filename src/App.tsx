@@ -43,7 +43,7 @@ function App() {
     if (date >= new Date("2023-04-09") && date <= new Date("2023-04-12")) {
       toast.warning(t("sorry"), {
         toastId: "sorry april 9 to 12",
-        autoClose: 6000,
+        autoClose: false,
       });
     }
   }

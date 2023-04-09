@@ -11,7 +11,7 @@ const resources = {
       welcome:
         "Welcome to Glacle, the game where you guess the Glacier campground! Click on the ❓ for instructions.",
       sorry:
-        "Due to increasing popularity, I had to find a permanent server solution and some user stats from before 4/9 may be lost.",
+        "Due to increasing popularity, I had to find a permanent server solution and some user stats from before 4/9 may be lost. (There is a complicated way to manually recover your stats, if you really care ask Andrew how.)",
       showOnGoogleMaps: "🗺️ View the campground map",
       welldone: "Well done!",
       unknownCountry: "Unknown campground!",
