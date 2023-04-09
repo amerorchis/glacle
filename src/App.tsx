@@ -10,8 +10,10 @@ import { useSettings } from "./hooks/useSettings";
 import { Stats } from "./components/panels/Stats";
 import { loadAllGuesses } from "./domain/guess";
 import { toast } from "react-toastify";
+import type { AppProps } from 'next/app';
+import { Analytics } from '@vercel/analytics/react';
 
-function App() {
+function App({ Component, pageProps }: AppProps) {
   const { t, i18n } = useTranslation();
 
   const allGuesses = loadAllGuesses();
@@ -41,13 +43,15 @@ function App() {
 
   return (
     <>
+      <Component {...pageProps} />
+      <Analytics />
       <ToastContainer
-        hideProgressBar
         position="top-center"
         transition={Flip}
         theme={settingsData.theme}
         autoClose={2000}
         bodyClassName="font-bold text-center"
+
       />
       {i18n.resolvedLanguage === "fr" ? (
         <InfosFr
