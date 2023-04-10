@@ -2,7 +2,7 @@
 // Countries with long/lat => https://developers.google.com/public-data/docs/canonical/countries_csv
 // Countries images => https://github.com/djaiss/mapsicon
 
-const countryCodesWithImage = [
+const campgroundCodeOptions = [
   "ada",
   "ako",
   "arr",
@@ -470,8 +470,8 @@ export const countries: Country[] = [
   },
 ];
 
-export const countriesWithImage = countries.filter((c) =>
-  countryCodesWithImage.includes(c.code.toLowerCase())
+export const campgroundOptions = countries.filter((c) =>
+  campgroundCodeOptions.includes(c.code.toLowerCase())
 );
 
 export function sanitizeCountryName(countryName: string): string {

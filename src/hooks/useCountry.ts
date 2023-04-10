@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import seedrandom from "seedrandom";
-import { countriesWithImage, Country } from "../domain/cgs";
+import { campgroundOptions, Country } from "../domain/cgs";
 
 const forcedCountries: Record<string, string> = {
   "2021-05-04": "UPN",
@@ -12,15 +12,15 @@ export function useCountry(dayString: string): [Country, number, number] {
     const forcedCountryCode = forcedCountries[dayString];
     const forcedCountry =
       forcedCountryCode != null
-        ? countriesWithImage.find(
+        ? campgroundOptions.find(
             (country) => country.code === forcedCountryCode
           )
         : undefined;
 
     return (
       forcedCountry ??
-      countriesWithImage[
-        Math.floor(seedrandom.alea(dayString)() * countriesWithImage.length)
+      campgroundOptions[
+        Math.floor(seedrandom.alea(dayString)() * campgroundOptions.length)
       ]
     );
   }, [dayString]);
