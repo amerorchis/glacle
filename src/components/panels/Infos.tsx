@@ -95,6 +95,16 @@ export function Infos({ isOpen, close, settingsData }: InfosProps) {
           The distances displayed are <i>straight line distances</i>, so
           remember that some campgrounds are very distant by trail, but quite
           close in a straight line because they are in different valleys.
+          Campground location data is from&nbsp;
+          <a
+            className="underline"
+            href="https://www.nps.gov/glac/planyourvisit/upload/GLAC_WildernessCGs.gpx"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            www.nps.gov/glac/planyourvisit/upload/GLAC_WildernessCGs.gpx
+          </a>
+          .
         </div>
       </div>
       <div className="space-y-3 text-justify border-b-2 border-gray-200 pb-3 mb-3">
@@ -138,7 +148,18 @@ export function Infos({ isOpen, close, settingsData }: InfosProps) {
         .{" "}
       </div>
       <div className="space-y-3 text-justify pb-3">
-        <div>Made by Andrew Smith</div>
+        <div>
+          Made by Andrew Smith. Source code on&nbsp;
+          <a
+            className="underline"
+            href="https://github.com/amerorchis/glacle"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Github
+          </a>
+          .
+        </div>
       </div>
     </Panel>
   );
