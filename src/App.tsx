@@ -49,7 +49,7 @@ function App() {
         theme={settingsData.theme}
         autoClose={2000}
         bodyClassName="font-bold text-center"
-        limit={1}
+        limit={2}
       />
       {i18n.resolvedLanguage === "fr" ? (
         <InfosFr
