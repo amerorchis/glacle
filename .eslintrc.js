@@ -5,7 +5,7 @@ module.exports = {
     node: true,
   },
   extends: [
-    "react-app",
+    "plugin:react-hooks/recommended",
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
@@ -19,7 +19,12 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "prettier"],
+  plugins: ["react", "react-hooks", "@typescript-eslint", "prettier"],
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
   rules: {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",

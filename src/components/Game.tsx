@@ -95,7 +95,7 @@ export function Game({ settingsData }: GameProps) {
   }, [country, guesses, i18n.resolvedLanguage]);
 
   return (
-    <div className="flex-grow flex flex-col mx-2">
+    <div className="grow flex flex-col mx-2">
       <br></br>
       <Guesses
         rowCount={MAX_TRY_COUNT}
