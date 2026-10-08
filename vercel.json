@@ -3,5 +3,13 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "build",
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=31536000, immutable" }
+      ]
+    }
+  ]
 }
