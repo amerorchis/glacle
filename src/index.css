@@ -1,6 +1,78 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* Dark mode is toggled with the "dark" class on <html> (was darkMode: "class"). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Keep Tailwind v3 hover behavior (v4 only applies hover on hover-capable devices). */
+@custom-variant hover (&:hover);
+
+@theme {
+  --color-dark-blue: #26547c;
+  --color-glacier-blue: #39b7c2;
+  --color-midnight-green1: #123c3f;
+  --color-midnight-green: #0d2d30;
+  --color-tea-green: #c6ecae;
+
+  /* Tailwind v3 palette values for the colors this app uses, so rendering
+     matches v3 exactly (v4's default palette uses slightly different oklch values). */
+  --color-gray-200: #e5e7eb;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-400: #94a3b8;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+
+  --animate-reveal: reveal 200ms forwards;
+  --animate-pop: pop 500ms ease-out forwards;
+
+  @keyframes reveal {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+/* Tailwind v3 preflight defaults that changed in v4. */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-gray-400);
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
 
 html, body, #root {
   min-height: 100%;
